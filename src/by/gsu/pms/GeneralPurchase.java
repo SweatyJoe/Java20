@@ -22,7 +22,8 @@ public class GeneralPurchase {
     public String toString() {
         return "GENERAL_PURCHASE " + name +
                 " " + price +
-                " " + unitNumber;
+                " " + unitNumber +
+                " " + getCost();
     }
 
     //generated*

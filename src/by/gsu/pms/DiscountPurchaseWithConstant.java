@@ -1,8 +1,8 @@
 package by.gsu.pms;
 
 public class DiscountPurchaseWithConstant extends GeneralPurchase{
-    public static final int SUB_CONSTANT = 3;
-    public static final double PURCHASE = 5.825;
+    public static final int SUB_CONSTANT = 5;
+    private static final double PURCHASE = 5.825;
 
     public DiscountPurchaseWithConstant(String name, double price, int unitNumber) {
         super(name, price, unitNumber);
