@@ -1,0 +1,6 @@
+Oil 5400 2
+Milk 2500 3
+Limon 3990 20
+Kofe 6590 10
+Chocolate 1990 3
+Fish 7690 1
