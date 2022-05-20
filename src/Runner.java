@@ -52,21 +52,23 @@ public class Runner {
         }
         System.out.println(Arrays.toString(lists));
 
-        int i1 = 0;
+        int index = 0;
         for(String lines : lists){
 
             String[] tmp = lines.split(" ");
-            purchases[i1].setName(tmp[0]);
-            purchases[i1].setPrice(Double.parseDouble(tmp[1]));
-            purchases[i1].setUnitNumber(Integer.parseInt(tmp[2]));
-            i1++;
+            purchases[index].setName(tmp[0]);
+            purchases[index].setPrice(Double.parseDouble(tmp[1]));
+            purchases[index].setUnitNumber(Integer.parseInt(tmp[2]));
+            index++;
         }
-
+        Writer(purchases);
+        index = 0;
         for(GeneralPurchase l : purchases){
             if(SUB_CONSTANT < l.getUnitNumber()){
                 DiscountPurchaseWithConstant discountPurchaseWithConstant = new DiscountPurchaseWithConstant(l.getName(), l.getPrice(), l.getUnitNumber());
-                Writer(discountPurchaseWithConstant);
+                purchases[index] = discountPurchaseWithConstant;
             }
+            index++;
         }
     }
 
