@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Scanner;
 
 import static by.gsu.pms.DiscountPurchaseWithConstant.SUB_CONSTANT;
-import static by.gsu.pms.DiscountPurchase.NUMBER_FOR_DISCOUNT;
 import static by.gsu.pms.WriterInfo.Writer;
 
 public class Runner {
@@ -66,15 +65,14 @@ public class Runner {
                 index++;
                 continue;
             }
-            if (NUMBER_FOR_DISCOUNT < l.getUnitNumber()) {
-                DiscountPurchase discountPurchase = new DiscountPurchase(l.getName(), l.getPrice(), l.getUnitNumber());
-                purchases[index] = discountPurchase;
-                index++;
-                continue;
+            String tmpName = l.getName();
+            for(DiscountPurchase.DiscountProduct c : DiscountPurchase.DiscountProduct.values()){
+                if(c.name().equals(l.getName())){
+                    DiscountPurchase discountPurchase = new DiscountPurchase(l.getName(), l.getPrice(), l.getUnitNumber());
+                    purchases[index] = discountPurchase;
+                }
             }
             index++;
         }
     }
-
-
 }
