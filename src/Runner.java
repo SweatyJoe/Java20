@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import static by.gsu.pms.DiscountPurchaseWithConstant.SUB_CONSTANT;
 import static by.gsu.pms.WriterInfo.Writer;
 
 public class Runner {
@@ -49,41 +48,15 @@ public class Runner {
         }
         PurchasesFactory factory = new PurchasesFactory();
         int index = 0;
-        for(String list : lists){
+        for (String list : lists) {
             purchases[index] = factory.purchasesFactory(list);
             index++;
         }
-
-//        for (String lines : lists) {
-//
-//            String[] tmp = lines.split(" ");
-//            purchases[index].setName(tmp[0]);
-//            purchases[index].setPrice(Double.parseDouble(tmp[1]));
-//            purchases[index].setUnitNumber(Integer.parseInt(tmp[2]));
-//            index++;
-//        }
-//        Writer(purchases);
-//        index = 0;
-//        for (GeneralPurchase l : purchases) {
-//            if (SUB_CONSTANT < l.getUnitNumber()) {
-//                DiscountPurchaseWithConstant discountPurchaseWithConstant = new DiscountPurchaseWithConstant(l.getName(), l.getPrice(), l.getUnitNumber());
-//                purchases[index] = discountPurchaseWithConstant;
-//                index++;
-//                continue;
-//            }
-//            for(DiscountPurchase.DiscountProduct c : DiscountPurchase.DiscountProduct.values()){
-//                if(c.name().equals(l.getName())){
-//                    DiscountPurchase discountPurchase = new DiscountPurchase(l.getName(), l.getPrice(), l.getUnitNumber());
-//                    purchases[index] = discountPurchase;
-//                }
-//            }
-//            index++;
-//        }
         double maxCost = 0;
-        for(GeneralPurchase l : purchases){
-            if(l == null) continue;
+        for (GeneralPurchase l : purchases) {
+            if (l == null) continue;
             if (maxCost < l.getCost()) maxCost = l.getCost();
         }
-        System.out.println("Max cost: "+maxCost);
+        System.out.println("Max cost: " + maxCost);
     }
 }

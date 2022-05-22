@@ -1,8 +1,7 @@
 package by.gsu.pms;
 
 public class DiscountPurchase extends GeneralPurchase {
-    private final static double DISCOUNT = 50;
-    public enum DiscountProduct {Milk, Kofe}
+    private final static double DISCOUNT = 20;
     public DiscountPurchase(String name, double price, int unitNumber) {
         super(name, price, unitNumber);
     }
@@ -11,7 +10,10 @@ public class DiscountPurchase extends GeneralPurchase {
     }
 
     public double getCost(){
-        return (getPrice()-DISCOUNT)*getUnitNumber();
+        if(DISCOUNT >= getUnitNumber()){
+            return (getPrice()-DISCOUNT)*getUnitNumber();
+        }
+        return super.getCost();
     }
 
     @Override

@@ -1,7 +1,6 @@
 package by.gsu.pms;
 
 public class DiscountPurchaseWithConstant extends GeneralPurchase{
-    public static final int SUB_CONSTANT = 10;
     private static final double PURCHASE = 5.825;
 
     public DiscountPurchaseWithConstant(String name, double price, int unitNumber) {
