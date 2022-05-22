@@ -1,6 +1,7 @@
 import by.gsu.pms.DiscountPurchase;
 import by.gsu.pms.DiscountPurchaseWithConstant;
 import by.gsu.pms.GeneralPurchase;
+import by.gsu.pms.PurchasesFactory;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -46,33 +47,43 @@ public class Runner {
             lists[i] = list;
             i++;
         }
-
+        PurchasesFactory factory = new PurchasesFactory();
         int index = 0;
-        for (String lines : lists) {
+        for(String list : lists){
+            purchases[index] = factory.purchasesFactory(list);
+            index++;
+        }
 
-            String[] tmp = lines.split(" ");
-            purchases[index].setName(tmp[0]);
-            purchases[index].setPrice(Double.parseDouble(tmp[1]));
-            purchases[index].setUnitNumber(Integer.parseInt(tmp[2]));
-            index++;
+//        for (String lines : lists) {
+//
+//            String[] tmp = lines.split(" ");
+//            purchases[index].setName(tmp[0]);
+//            purchases[index].setPrice(Double.parseDouble(tmp[1]));
+//            purchases[index].setUnitNumber(Integer.parseInt(tmp[2]));
+//            index++;
+//        }
+//        Writer(purchases);
+//        index = 0;
+//        for (GeneralPurchase l : purchases) {
+//            if (SUB_CONSTANT < l.getUnitNumber()) {
+//                DiscountPurchaseWithConstant discountPurchaseWithConstant = new DiscountPurchaseWithConstant(l.getName(), l.getPrice(), l.getUnitNumber());
+//                purchases[index] = discountPurchaseWithConstant;
+//                index++;
+//                continue;
+//            }
+//            for(DiscountPurchase.DiscountProduct c : DiscountPurchase.DiscountProduct.values()){
+//                if(c.name().equals(l.getName())){
+//                    DiscountPurchase discountPurchase = new DiscountPurchase(l.getName(), l.getPrice(), l.getUnitNumber());
+//                    purchases[index] = discountPurchase;
+//                }
+//            }
+//            index++;
+//        }
+        double maxCost = 0;
+        for(GeneralPurchase l : purchases){
+            if(l == null) continue;
+            if (maxCost < l.getCost()) maxCost = l.getCost();
         }
-        Writer(purchases);
-        index = 0;
-        for (GeneralPurchase l : purchases) {
-            if (SUB_CONSTANT < l.getUnitNumber()) {
-                DiscountPurchaseWithConstant discountPurchaseWithConstant = new DiscountPurchaseWithConstant(l.getName(), l.getPrice(), l.getUnitNumber());
-                purchases[index] = discountPurchaseWithConstant;
-                index++;
-                continue;
-            }
-            String tmpName = l.getName();
-            for(DiscountPurchase.DiscountProduct c : DiscountPurchase.DiscountProduct.values()){
-                if(c.name().equals(l.getName())){
-                    DiscountPurchase discountPurchase = new DiscountPurchase(l.getName(), l.getPrice(), l.getUnitNumber());
-                    purchases[index] = discountPurchase;
-                }
-            }
-            index++;
-        }
+        System.out.println("Max cost: "+maxCost);
     }
 }

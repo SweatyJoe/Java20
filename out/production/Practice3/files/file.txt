@@ -1,6 +1,6 @@
-Oil 5400 2
-Milk 2500 9
-Limon 3990 20
-Kofe 6590 30
-Chocolate 1990 3
-Fish 7690 1
+GeneralPurchase Oil 5400 2
+GeneralPurchase Milk 2500 9
+DiscountPurchaseWithConstant Limon 3990 20
+DiscountPurchaseWithConstant Kofe 6590 30
+DiscountPurchase Chocolate 1990 3
+DiscountPurchase Fish 7690 1
